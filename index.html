@@ -1,0 +1,109 @@
+<html>
+<head>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Georgia;
+}
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#000011;
+color:#FFEEBB;
+
+}
+
+
+h1{
+    margin: 5% 0 5% 0;
+    
+}
+
+p, .services, .service{
+border:2px dotted #FFEEBB;
+padding:2% 2%;
+width: 100%;
+
+
+display: inline-block;
+box-sizing: border-box;
+}
+h2{
+    margin: 4% 0 4% 0;
+}
+.services{
+    font-size: 100%;
+    max-height: 80%;
+}
+.service{
+    max-width: 45%;
+    margin: 2%;
+    font-size: 100%;
+}
+button{
+    color:#000000;
+    background: #FFEEBB;
+    font-size: 100%;
+  
+}
+
+*{
+    animation: color 10s ease-in 1 alternate;
+}
+
+@keyframes color {
+    0% { transform: perspective(1000px) rotateX(0deg);}
+    50% { transform: perspective(10px) rotateY(1deg);}
+    100% { transform: perspective(10px) rotateZ(2deg);}
+}
+
+@media (min-width:980px) {
+    p, .services {
+        max-width: 80%;
+        border: 5px dotted #FFFFCC;
+        font-size: 120%;
+        
+    }
+    .service{
+        font-size: 110%;
+    }
+    
+}
+
+
+</style>
+<title>Saalim Zafar | Web Developer </title>
+</head>
+<body>
+<div>
+
+<h1>Saalim Zafar</h1><br>
+<p> A passionate web developer who loves to code and builds digital experiences. Someone who hardly gets bored about coding. It goes like this "When I feel bored I code and when I don't feel bored I still code." </p>
+<h2>My Services</h2>
+<div class="services">
+    <div class="service">Design</div>
+    <div class="service">Development</div>
+    <div class="service">Maintenance</div>
+    <div class="service">Assistance</div>
+</div>
+<h2>My Portfolios</h2>
+<div class="services">
+    <div class="service">Design</div>
+    <div class="service">Design</div>
+    <div class="service">Design</div>
+    <div class="service">Design</div>
+</div>
+<h2>Get in touch</h2>
+<div class="services">
+    <button class="service" onclick="window.print()">Twitter</button>
+    <button class="service">Gmail</button>
+    
+</div>
+</div>
+
+</body>
+</html>
