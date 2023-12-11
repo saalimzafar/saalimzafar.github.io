@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage Listings</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col">
+      <input id="searchInput" type="text" class="form-control" placeholder="Search...">
+    </div>
+    <div class="col-auto">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input filter-checkbox" type="checkbox" id="instagramCheck">
+        <label class="form-check-label" for="instagramCheck">Show Instagram</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input filter-checkbox" type="checkbox" id="youtubeCheck">
+        <label class="form-check-label" for="youtubeCheck">Show YouTube</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input filter-checkbox" type="checkbox" id="tiktokCheck">
+        <label class="form-check-label" for="tiktokCheck">Show TikTok</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Description</th>
+          <th>Instagram</th>
+          <th>YouTube</th>
+          <th>TikTok</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Table rows will be populated dynamically using JavaScript -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="main.js"></script> <!-- JavaScript file for table functionality -->
+</body>
+</html>
