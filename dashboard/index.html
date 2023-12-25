@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    
+    .data-points, .chart-container {border:2px solid #ccc; display:flex; justify-content:space-around; margin:10px; margin-left:0; padding:10px;}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-panel" id="leftPanel">
+        <h2>Menu</h2>
+        <ul>
+          <li>Dashboard</li>
+          <li>Analytics</li>
+          <li>Reports</li>
+          <li>Settings</li>
+          <li>Logout</li>
+        </ul>
+        
+      </div>
+      
+      <div class="main-section">
+        <button id="toggleBtn">Toggle Panel</button>
+        <h1>Welcome to Your Dashboard</h1>
+        <p>
+          This is your personalized dashboard. Explore and manage your data
+          efficiently.
+        </p>
+
+        <div class="data-points">
+          <div class="data-point">
+            <h3>Data Point 1</h3>
+            <p>Value: <span id="dataPoint1">250</span></p>
+          </div>
+          <div class="data-point">
+            <h3>Data Point 2</h3>
+            <p>Value: <span id="dataPoint2">150</span></p>
+          </div>
+          <div class="data-point">
+            <h3>Data Point 3</h3>
+            <p>Value: <span id="dataPoint2">100</span></p>
+          </div>
+          <div class="data-point">
+            <h3>Data Point 4</h3>
+            <p>Value: <span id="dataPoint2">350</span></p>
+          </div>
+          <div class="data-point">
+            <h3>Data Point 3</h3>
+            <p>Value: <span id="dataPoint3">350</span></p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="lineChart" width="400" height="300"></canvas>
+          <canvas id="barChart" width="400" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="lineChart.js"></script>
+    <script src="barChart.js"></script>
+  </body>
+</html>
