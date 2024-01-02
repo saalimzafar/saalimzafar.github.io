@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RESTful Web Service Consumer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      width: 80%;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+  </style>
+  <script>
+   function submitForm() {
+      // Simulating a mock JSON response for demonstration
+      const mockResponse = {
+        "message": "Mock response data",
+        "details": {
+          "cedula": "123456789",
+          "idUsuario": "user123",
+          "nombreUsuario": "John Doe",
+          "oficina": "Office XYZ",
+          "division": "Division ABC"
+        }
+      };
+
+      // Displaying the mock response in JSON format
+      document.getElementById('result').innerText = JSON.stringify(mockResponse, null, 2);
+    }
+    function submitForm2() {
+      const cedula = document.getElementById('cedula').value;
+      const idUsuario = document.getElementById('idUsuario').value;
+      const nombreUsuario = document.getElementById('nombreUsuario').value;
+      const oficina = document.getElementById('oficina').value;
+      const division = document.getElementById('division').value;
+
+      const queryString = `?cedula=${encodeURIComponent(cedula)}&idUsuario=${encodeURIComponent(idUsuario)}&nombreUsuario=${encodeURIComponent(nombreUsuario)}&oficina=${encodeURIComponent(oficina)}&division=${encodeURIComponent(division)}`;
+      const url = 'YOUR_REST_API_ENDPOINT' + queryString; // Replace 'YOUR_REST_API_ENDPOINT' with your actual API endpoint
+
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            document.getElementById('result').innerText = JSON.stringify(response, null, 2);
+          } else {
+            document.getElementById('result').innerText = 'Error: Unable to fetch data';
+          }
+        }
+      };
+
+      xhr.open('GET', url, true);
+      xhr.setRequestHeader('Authorization', 'YOUR_AUTHORIZATION_TOKEN'); // Replace 'YOUR_AUTHORIZATION_TOKEN' with your actual authorization token
+      xhr.send();
+    }
+  </script>
+</head>
+<body>
+  <h1>RESTful Web Service Consumer</h1>
+  <form onsubmit="event.preventDefault(); submitForm();">
+    <label for="cedula">Cedula:</label>
+    <input type="text" id="cedula" name="cedula"><br><br>
+
+    <label for="idUsuario">ID Usuario:</label>
+    <input type="text" id="idUsuario" name="idUsuario"><br><br>
+
+    <label for="nombreUsuario">Nombre Usuario:</label>
+    <input type="text" id="nombreUsuario" name="nombreUsuario"><br><br>
+
+    <label for="oficina">Oficina:</label>
+    <input type="text" id="oficina" name="oficina"><br><br>
+
+    <label for="division">División:</label>
+    <input type="text" id="division" name="division"><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2>Response:</h2>
+  <pre id="result"></pre>
+</body>
+</html>
