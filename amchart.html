@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script> <!-- Include the theme here --> <style>
+    body {
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+    </style>
+</head>
+<body oncontextmenu="return false">
+    <div id="chartdiv" style="width: 80%; height: 500px;"></div>
+    <script>
+    
+    var data = [
+    { country: "USA", profession1: 50, profession2: 30, profession3: 20 },
+    { country: "Canada", profession1: 40, profession2: 35, profession3: 25 },
+    { country: "India", profession1: 30, profession2: 25, profession3: 45 },
+    { country: "Japan", profession1: 50, profession2: 55, profession3: 60 },
+    // Add more countries and professions as needed
+];
+
+am4core.ready(function () {
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+    // Create chart instance
+    var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+    // Set the background color of the chart to black and font color to white
+    chart.background.fill = am4core.color("#145236"); // Black
+    chart.color = am4core.color("#FFF"); // White font color
+
+    // Customize the title
+    var title = chart.titles.create();
+    title.text = "Professions Distribution Across Countries";
+    title.fontSize = 20;
+    title.fill = am4core.color("#FFF"); // White font color for the title
+
+    // Add data
+    chart.data = data;
+
+    // Create axes
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "country";
+    categoryAxis.title.text = "Countries";
+    categoryAxis.title.fill = am4core.color("#FFF"); // White font color for axis title
+    categoryAxis.renderer.labels.template.fill = am4core.color("#fff"); // White font color for axis labels
+
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.title.text = "Professions";
+    valueAxis.title.fill = am4core.color("#FFF"); // White font color for axis title
+    valueAxis.renderer.labels.template.fill = am4core.color("white"); // White font color for axis labels
+
+    // Create series for each profession
+    for (var key in chart.data[0]) {
+        if (key !== "country") {
+            var series = chart.series.push(new am4charts.LineSeries());
+            series.dataFields.valueY = key;
+            series.dataFields.categoryX = "country";
+            series.name = key;
+            series.tooltipText = "{name}: [bold]{valueY}[/]";
+            series.stroke = am4core.color("#FFF"); // White
+            series.hiddenInLegend = true; // Hide the series from the legend
+        }
+    }
+
+    // Add legend
+    chart.legend = new am4charts.Legend();
+    chart.legend.labels.template.fill = am4core.color("#FFF"); // White font color for legend labels
+
+    // Add cursor
+    chart.cursor = new am4charts.XYCursor();
+});
+
+    </script>
+</body>
+</html>
