@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Brands</title>
+</head>
+<body>
+  <h1>Car Brands</h1>
+  <ul id="brands-list"></ul>
+
+  <script>
+    // Function to fetch data from Google Apps Script web app
+    function fetchData() {
+      fetch('https://script.google.com/macros/s/AKfycbwb3_7tkmNdLKo5CKRi83G83Q3ZRmCtEiNCF_SszfoO3fvsJ_1DBEUIyjFW4144qdro6w/exec') // Replace 'PASTE_YOUR_WEB_APP_URL_HERE' with the URL of your web app
+        .then(response => response.json())
+        .then(data => renderBrands(data));
+    }
+
+    // Function to render brands in the HTML
+    function renderBrands(data) {
+      const brandsList = document.getElementById('brands-list');
+      brandsList.innerHTML = ''; // Clear previous content
+
+      data.forEach(brand => {
+        const listItem = document.createElement('li');
+        listItem.textContent = brand;
+        brandsList.appendChild(listItem);
+      });
+    }
+
+    // Fetch data when the page loads
+    document.addEventListener('DOMContentLoaded', fetchData);
+  </script>
+</body>
+</html>
